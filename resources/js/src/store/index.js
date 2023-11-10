@@ -5,6 +5,8 @@ import {user_Module} from "@/src/store/User/user_Module.js";
 import {login_register_Module} from "@/src/store/User/login_register_Module.js";
 import {content_Module} from "@/src/store/Content/content_Module.js";
 import {lang_Module} from "@/src/store/Language/lang_Module.js";
+import {comments_Module} from "@/src/store/Comments/comments_Module.js";
+import {replies_Module} from "@/src/store/Comments/replies_Module.js";
 
 
 export default createStore({
@@ -15,6 +17,8 @@ export default createStore({
         lang_module: lang_Module,
 
         content_module: content_Module,
+        comments_module: comments_Module,
+        replies_Module: replies_Module
 
 
     }

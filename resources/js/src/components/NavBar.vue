@@ -44,6 +44,13 @@
                         </router-link>
                     </li>
 
+
+                    <li class="nav-item" v-show="token">
+                        <router-link class="nav-link" aria-current="page" :to="{name: 'comments'}">
+                            comments
+                        </router-link>
+                    </li>
+
                 </ul>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">

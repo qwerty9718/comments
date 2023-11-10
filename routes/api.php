@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContentController;
 
 use Illuminate\Http\Request;
@@ -29,8 +31,8 @@ Route::group(['prefix' => LocalizationService::locale(), 'middleware' => 'setLoc
     Route::get('/getSecondContent', [ContentController::class, 'getSecondContent']);
 
     Route::group(['prefix' => 'auth'], function () {
-        Route::post('/logout', [AuthController::class,'logout'])->middleware('auth:sanctum');
-        Route::get('/get', [AuthController::class,'someContent'])->middleware('auth:sanctum');
+        Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+        Route::get('/get', [AuthController::class, 'someContent'])->middleware('auth:sanctum');
         Route::post('/login', [AuthController::class, 'login']);
         Route::post('/register', [AuthController::class, 'register']);
     });
@@ -39,7 +41,16 @@ Route::group(['prefix' => LocalizationService::locale(), 'middleware' => 'setLoc
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/user-data', [ContentController::class, 'index']);
+});
 
+
+Route::group(['prefix' => 'comment'], function () {
+    Route::get('/', [CommentController::class, 'index']);
+    Route::post('/', [CommentController::class,'createComment']);
+});
+
+Route::group(['prefix' => 'reply'], function (){
+    Route::get('/{id}', [CommentController::class, 'getReplies']);
 });
 
 

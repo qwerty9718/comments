@@ -15,7 +15,13 @@ const routes = [
     ...login_routes,
 
     {
+        path:'/comments',
+        component: () => import('@/src/pages/Comments/Comments.vue'),
+        name:'comments'
+    },
 
+
+    {
         path: '/:pathMatch(.*)*',
         component: () => import('@/src/pages/Error.vue'),
         name:'error'
